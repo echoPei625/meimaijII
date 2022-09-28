@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property resource="application.properties"/>
+	<property name="APP" value="meimaijII"/>
+	<property name="CHARSET" value="UTF-8"/>
+	<property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  [%-5p]  %-30.30C{0}  %-35.35M  %-4L [%thread] - %m%n" />
+	<!-- 控制台輸出 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>${PATTERN}</pattern>
+			<charset>${CHARSET}</charset>
+		</encoder>
+	</appender>
+	
+	<!--日誌拆分和歸檔-->
+    <!-- 卷動記錄檔案，先將日誌記錄到指定檔案，當符合某個條件時，將日誌記錄到其他檔案 -->
+	<appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${APP}.log</file>
+		 <!--TimeBasedRollingPolicy： 最常用的卷動策略，它根據時間來制定卷動策略，既負責卷動也負責出發卷動 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${APP}/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<MaxHistory>90</MaxHistory>
+			<maxFileSize>1MB</maxFileSize>
+		</rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+	</appender>
+	
+	<root level="INFO">
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="ROLLINGFILE"/>
+	</root>
+</configuration>
