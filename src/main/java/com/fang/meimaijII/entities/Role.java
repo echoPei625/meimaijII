@@ -1,7 +1,6 @@
 package com.fang.meimaijII.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,11 +14,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ROLE")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role implements Serializable{
 
     private static final long serialVersionUID = 616457182681239048L;
@@ -32,6 +37,6 @@ public class Role implements Serializable{
     private String name;
     
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinTable(name = "ROLE_MODULE_BY_JPA")
-    private Set<Module> modules = new HashSet<Module>();
+    @JoinTable(name = "ROLE_MODULE_MAPPING")
+    private Set<Module> module ;
 }

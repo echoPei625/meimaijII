@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "PRODUCT")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product implements Serializable{
 
     private static final long serialVersionUID = -8689793578604932634L;

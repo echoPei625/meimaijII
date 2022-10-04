@@ -1,6 +1,7 @@
 package com.fang.meimaijII.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "USER")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable{
 
     private static final long serialVersionUID = -3464813936657868369L;
@@ -54,4 +61,10 @@ public class User implements Serializable{
 
     @Column(name = "mail_news", nullable = false)
     private Boolean mailNews;
+    
+    @Column(name = "birth", nullable = false)
+    private Date birth;
+    
+    @Column(name = "refresh_token", nullable = false, length = 512)
+    private String refreshToken;
 }

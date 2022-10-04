@@ -6,7 +6,9 @@ public enum ResponseCode{
     INPUT_ISSUE(9000, "傳入參數有誤"),
     LOGIC_ISSUE(9001, "因商業邏輯執行失敗"),
     TOKEN_ISSUE(9002, "token過期"),
-    FORBIDAN(9003, "無相關權限");
+    FORBIDAN(9003, "無相關權限"),
+    DATA_NOT_FOUND(9004, "查無資料"),
+    SYSTEM_ISSUE(5000, "系統問題");
 
     private int code;
 

@@ -24,10 +24,13 @@ public class Module implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(name = "name", nullable = false)
-    private String name;
-    
-    @ManyToMany(mappedBy = "modules", fetch = FetchType.LAZY)
-    private Set<Role> roles;
+
+    @Column(name = "name_en", nullable = false)
+    private String nameEn;
+
+    @Column(name = "name_zh", nullable = true)
+    private String nameZh;
+
+    @ManyToMany(mappedBy = "module", fetch = FetchType.LAZY)
+    private Set<Role> role;
 }

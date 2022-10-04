@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "PRODUCT_IMAGE_MAPPING")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductImageMapping implements Serializable{
 
     private static final long serialVersionUID = 6251046355671574932L;

@@ -28,7 +28,7 @@ public class ExceptionsHandler{
     @ExceptionHandler(MeimaijIIException.class)
     public ResponseEntity<Object> handleMeimaijIIException(MeimaijIIException e){
 //        return ResponseEntity.badRequest().body(new ResponseSpec(ResponseCode.LOGIC_ISSUE.getCode(), e.getMessage()));
-        return ResponseEntity.badRequest().body(new ResponseSpec(ResponseCode.LOGIC_ISSUE.getCode(),ResponseCode.LOGIC_ISSUE.getMessage(), e.getMessage()));
+        return ResponseEntity.badRequest().body(new ResponseSpec(e.getResponseCode(), e.getMessage()));
 
     }
 }

@@ -1,7 +1,14 @@
 package com.fang.meimaijII.repositories;
 
-import org.springframework.data.repository.Repository;
+import java.util.List;
 
-@org.springframework.stereotype.Repository
-public interface ModuleRepository extends Repository<com.fang.meimaijII.entities.Module, Long>{
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.fang.meimaijII.entities.Module;
+
+@Repository
+public interface ModuleRepository extends JpaRepository<Module, Long>{
+    
+    List<Module> findByIdIn(List<Long> ids);
 }
