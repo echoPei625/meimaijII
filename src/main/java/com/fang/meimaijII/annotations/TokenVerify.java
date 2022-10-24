@@ -7,9 +7,12 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import com.fang.meimaijII.enums.ModuleEnum;
+
 
 @Retention(RUNTIME)
 @Target(METHOD)
 @Documented
 public @interface TokenVerify{
+    ModuleEnum value();
 }

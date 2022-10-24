@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fang.meimaijII.annotations.TokenVerify;
+import com.fang.meimaijII.enums.ModuleEnum;
 import com.fang.meimaijII.enums.ResponseCode;
 import com.fang.meimaijII.services.BrandService;
 import com.fang.meimaijII.utils.ResponseSpec;
@@ -25,12 +27,14 @@ public class BrandController{
     private BrandService brandService;
 
     @PostMapping
+    @TokenVerify(ModuleEnum.EDIT)
     public ResponseSpec create(@Valid @RequestBody BrandVo vo){
         brandService.create(vo);
         return new ResponseSpec(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage());
     }
 
     @PatchMapping("/{nameEn}")
+    @TokenVerify(ModuleEnum.EDIT)
     public ResponseSpec update(@PathVariable(name = "nameEn", required = true) String nameEn, @RequestBody BrandVo vo){
         brandService.update(nameEn, vo);
         return new ResponseSpec(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage());
@@ -42,6 +46,7 @@ public class BrandController{
     }
     
     @DeleteMapping("/{nameEn}")
+    @TokenVerify(ModuleEnum.DELETE)
     public ResponseSpec delete(@PathVariable(name = "nameEn", required = true) String nameEn) {
         brandService.delete(nameEn);
         return new ResponseSpec(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage());

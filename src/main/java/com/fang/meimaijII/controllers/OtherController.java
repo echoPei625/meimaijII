@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fang.meimaijII.annotations.TokenVerify;
 import com.fang.meimaijII.enums.ResponseCode;
 import com.fang.meimaijII.services.OtherService;
 import com.fang.meimaijII.utils.ResponseSpec;
@@ -45,7 +44,6 @@ public class OtherController{
         return new ResponseSpec(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage(), otherService.login(vo));
     }
 
-    @TokenVerify
     @PostMapping("/verify")
     public ResponseSpec verify(HttpServletRequest request){
         return new ResponseSpec(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage(), otherService.verify(request));
